@@ -1,4 +1,4 @@
-## getting-and-cleaning-data
+## Getting and Cleaning Data Course Project
 ### Getting and Cleaning data
 
 Getting and Cleaning Data Course Projectless 
