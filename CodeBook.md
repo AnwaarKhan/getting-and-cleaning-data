@@ -95,7 +95,7 @@ names(Data)<-gsub("BodyBody", "Body", names(Data))
 #### write a tidy data set to a file
 write.table(Data, file = "./data/tidydata1.txt",row.name=FALSE)
 
-#### creates a second,independent tidy data set and ouput it
+#### creates a second, independent tidy data set and ouput it
 library(plyr);
 Data2<-aggregate(. ~subject + activity, Data, mean)
 Data2<-Data2[order(Data2$subject,Data2$activity),]
