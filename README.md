@@ -19,3 +19,26 @@ You should create one R script called run_analysis.R that does the following.
 3. Uses descriptive activity names to name the activities in the data set
 4. Appropriately labels the data set with descriptive variable names.
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+### Explanation of Analysis Files
+
+#### First Data Set
+
+- Read activity files
+- Read subject files
+- Read features files
+- Concatenate the data tables by rows
+- Set names to variables
+- Merge columns to get the data frame Data for all data
+- Subset Name of Features by measurements on the mean and standard deviation
+- Subset the data frame Data by seleted names of Features
+- Read descriptive activity names from "activity_labels.txt"
+- Set data set with descriptive variable names
+- Write a tidy data set to a file
+
+#### Second Data Set
+
+- Create a second data set
+- Aggregate and caclulate mean of activities
+- Place the mean in columns of subject/activity row
+- Write a second independent tidy data set to a file
