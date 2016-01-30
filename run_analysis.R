@@ -49,6 +49,10 @@ Data<-subset(Data,select=selectedNames)
 ## Read descriptive activity names from "activity_labels.txt"
 activityLabels <- read.table(file.path(path, "activity_labels.txt"),header = FALSE)
 
+## use descriptive activity names
+Data$activity<-factor(Data$activity);
+Data$activity<- factor(Data$activity,labels=as.character(activityLabels$V2))
+
 ## data set with descriptive variable names
 names(Data)<-gsub("^t", "time", names(Data))
 names(Data)<-gsub("^f", "frequency", names(Data))
