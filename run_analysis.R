@@ -57,6 +57,9 @@ names(Data)<-gsub("Gyro", "Gyroscope", names(Data))
 names(Data)<-gsub("Mag", "Magnitude", names(Data))
 names(Data)<-gsub("BodyBody", "Body", names(Data))
 
+## Write a tidy data set to a file
+write.table(Data, file = "./data/tidydata1.txt",row.name=FALSE)
+
 ## Creates a second,independent tidy data set and ouput it
 library(plyr);
 Data2<-aggregate(. ~subject + activity, Data, mean)
