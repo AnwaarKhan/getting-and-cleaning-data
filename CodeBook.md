@@ -32,7 +32,7 @@ For each record in the dataset it is provided:
 - Its activity label. 
 - An identifier of the subject who carried out the experiment.
 
-#### Download the file
+#### download the file
 if(!file.exists("./data")){dir.create("./data")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(fileUrl,destfile="./data/Dataset.zip")
@@ -66,18 +66,18 @@ names(dataActivity)<- c("activity")
 dataFeaturesNames <- read.table(file.path(path, "features.txt"),head=FALSE)
 names(dataFeatures)<- dataFeaturesNames$V2
 
-#### Merge columns to get the data frame Data for all data
+#### merge columns to get the data frame Data for all data
 dataCombine <- cbind(dataSubject, dataActivity)
 Data <- cbind(dataFeatures, dataCombine)
 
-#### Subset Name of Features by measurements on the mean and standard deviation
+#### subset Name of Features by measurements on the mean and standard deviation
 subdataFeaturesNames<-dataFeaturesNames$V2[grep("mean\\(\\)|std\\(\\)", dataFeaturesNames$V2)]
 
-#### Subset the data frame Data by seleted names of Features
+#### subset the data frame Data by seleted names of Features
 selectedNames<-c(as.character(subdataFeaturesNames), "subject", "activity" )
 Data<-subset(Data,select=selectedNames)
 
-#### Read descriptive activity names from "activity_labels.txt"
+#### read descriptive activity names from "activity_labels.txt"
 activityLabels <- read.table(file.path(path, "activity_labels.txt"),header = FALSE)
 
 #### data set with descriptive variable names
@@ -88,10 +88,10 @@ names(Data)<-gsub("Gyro", "Gyroscope", names(Data))
 names(Data)<-gsub("Mag", "Magnitude", names(Data))
 names(Data)<-gsub("BodyBody", "Body", names(Data))
 
-#### Write a tidy data set to a file
+#### write a tidy data set to a file
 write.table(Data, file = "./data/tidydata1.txt",row.name=FALSE)
 
-#### Creates a second,independent tidy data set and ouput it
+#### creates a second,independent tidy data set and ouput it
 library(plyr);
 Data2<-aggregate(. ~subject + activity, Data, mean)
 Data2<-Data2[order(Data2$subject,Data2$activity),]
